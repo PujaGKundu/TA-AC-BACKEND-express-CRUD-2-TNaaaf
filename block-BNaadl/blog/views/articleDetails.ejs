@@ -20,14 +20,11 @@
       <h2>Author: <%= article.author %></h2>
       <h2>Tags: <%= article.tags %></h2>
       <p>Description: <%= article.description %></p>
-      <h3>Likes: <%= article.likes %></h3>
+      <h3>Likes: <%= article.likes ? article.likes : 0 %></h3>
     </div>
     <div>
-      <a href="">
-        <button>Increase Likes</button>
-      </a>
-      <a href="">
-        <button>Decrease Likes</button>
+      <a href="/articles/<%= article.id %>/inc">
+        <button class="btn">Likes</button>
       </a>
     </div>
     <div>

@@ -60,4 +60,13 @@ router.get("/:id/delete", (req, res, next) => {
   });
 });
 
+//increment likes
+router.get("/:id/inc", (req, res, next) => {
+  var id = req.params.id;
+  Article.findByIdAndUpdate(id, { $inc: { likes: 1 } }, (err, article) => {
+    if (err) return next(err);
+    res.redirect("/articles/" + id);
+  });
+});
+
 module.exports = router;
