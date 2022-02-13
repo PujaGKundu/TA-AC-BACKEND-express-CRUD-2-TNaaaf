@@ -61,7 +61,10 @@ router.get("/:id/delete", (req, res, next) => {
     if (err) return next(err);
     Comment.deleteMany({ articleId: article.id }, (err, info) => {
       if (err) return next(err);
-      res.redirect("/articles");
+      Comment.remove({ articleId: article.id }, (err) => {
+        if (err) return next(err);
+        res.redirect("/articles");
+      });
     });
   });
 });
